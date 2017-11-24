@@ -1,0 +1,19 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanailMinchev/webpack-test.git"
+  },
+  "author": "Danail Minchev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DanailMinchev/webpack-test/issues"
+  },
+  "homepage": "https://github.com/DanailMinchev/webpack-test#readme"
+}
