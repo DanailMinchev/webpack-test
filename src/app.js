@@ -1,1 +1,3 @@
-console.log("hi!")
+require('babel-polyfill')
+
+console.log('hi!')
