@@ -1,4 +1,8 @@
+// Node.js
 const path = require('path')
+
+// npm
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
@@ -34,6 +38,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     // Usually, it's recommended to extract the style sheets into a dedicated file in production using the ExtractTextPlugin.
     // This way your styles are not dependent on JavaScript.
     new ExtractTextPlugin({
