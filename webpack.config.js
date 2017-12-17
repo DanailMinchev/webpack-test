@@ -2,15 +2,21 @@
 const path = require('path')
 
 // npm
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// Constants
+const VENDOR_LIBRARIES = ['babel-polyfill']
 
 module.exports = {
-  entry: ['babel-polyfill', './src/js/app.js'],
+  entry: {
+    bundle: './src/js/app.js',
+    vendor: VENDOR_LIBRARIES
+  },
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist'
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -27,10 +33,16 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           use: [
             {
-              loader: 'css-loader' // translates CSS into CommonJS module (applied 2nd)
+              loader: 'css-loader', // translates CSS into CommonJS module (applied 2nd)
+              options: {
+                sourceMap: true
+              }
             },
             {
-              loader: 'sass-loader' // compiles Sass to CSS (applied 1st)
+              loader: 'sass-loader', // compiles Sass to CSS (applied 1st)
+              options: {
+                sourceMap: true
+              }
             }
           ]
         })
@@ -38,11 +50,21 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     // Usually, it's recommended to extract the style sheets into a dedicated file in production using the ExtractTextPlugin.
     // This way your styles are not dependent on JavaScript.
     new ExtractTextPlugin({
-      filename: 'main.css'
+      filename: '[name].[contenthash].css'
+    }),
+    // Extract common code into separate files
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
+    // Update the <script> tags automatically
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
     })
   ]
 }
