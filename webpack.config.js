@@ -9,6 +9,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // Constants
 const VENDOR_LIBRARIES = ['babel-polyfill']
 
+// Initialisation and global variables
+const extractSaas = new ExtractTextPlugin({
+  filename: '[name].[contenthash].css'
+});
+
 module.exports = {
   entry: {
     bundle: './src/js/app.js',
@@ -30,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        use: extractSaas.extract({
           use: [
             {
               loader: 'css-loader', // translates CSS into CommonJS module (applied 2nd)
@@ -50,21 +55,26 @@ module.exports = {
     ]
   },
   plugins: [
+    // Allow global constants configured at compile time
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    // Usually, it's recommended to extract the style sheets into a dedicated file in production using the ExtractTextPlugin.
-    // This way your styles are not dependent on JavaScript.
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css'
     }),
     // Extract common code into separate files
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
-    // Update the <script> tags automatically
+    // Usually, it's recommended to extract the style sheets into a dedicated file
+    // in production using the ExtractTextPlugin.
+    // This way your styles are not dependent on JavaScript.
+    extractSaas,
+    // Update the <script> and <link> tags automatically
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/index.html',
+      filename: 'index.html',
+      xhtml: false,
+      minify: {
+        collapseWhitespace: true
+      }
     })
   ]
 }
