@@ -1,4 +1,6 @@
 require('babel-polyfill')
 require('../scss/main.scss')
 
-console.log('hi!')
+const myString = 'hi!';
+
+console.log(myString)
