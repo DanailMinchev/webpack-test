@@ -24,6 +24,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js'
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
