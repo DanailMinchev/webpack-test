@@ -15,6 +15,7 @@
 | css-loader                   | dev           | 0.28.7        | `webpack and Sass/CSS related:` CSS loader for webpack. Used to handle `.css` imports. See: [css-loader](https://webpack.js.org/loaders/css-loader/)                                                                                                                                                                  |
 | extract-text-webpack-plugin  | dev           | 3.0.2         | `webpack related:` Extract text from a bundle, or bundles, into a separate file.  See: [ExtractTextWebpackPlugin](https://webpack.js.org/plugins/extract-text-webpack-plugin/)                                                                                                                                        |
 | html-webpack-plugin          | dev           | 2.30.1        | `webpack related:` The HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles.  See: [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)                                                                                                                              |
+| uglifyjs-webpack-plugin      | dev           | 1.1.6         | `webpack related:` UglifyJS is a JavaScript parser, minifier, compressor and beautifier toolkit.  See: [UglifyjsWebpackPlugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/)                                                                                                                               |
 
 ### Installation
 
