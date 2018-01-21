@@ -5,6 +5,7 @@
 | rimraf                       | dev           | 2.6.2         | A `rm -rf` util for Node.js.                                                                                                                                                                                                                                                                                          |
 | webpack                      | dev           | 3.10.0        | `webpack related:` webpack is module bundler. `webpack` is the main package.                                                                                                                                                                                                                                          |
 | webpack-dev-server           | dev           | 2.9.7         | `webpack related:` webpack dev server.                                                                                                                                                                                                                                                                                |
+| webpack-merge                | dev           | 4.1.1         | `webpack related:` webpack-merge provides a merge function that is used to merge webpack configurations See: [webpack-merge](https://github.com/survivejs/webpack-merge)                                                                                                                                              |
 | babel-core                   | dev           | 6.26.0        | `Babel related:` Babel is a JavaScript compiler. `babel-core` is babel compiler core. See: [Using Babel](https://babeljs.io/docs/setup/) [Babel's core packages](https://babeljs.io/docs/core-packages/)                                                                                                              |
 | babel-preset-env             | dev           | 1.6.1         | `Babel related:` Babel preset that automatically determines the Babel plugins you need based on your supported environments. Uses [compat-table](https://github.com/kangax/compat-table). See: [Env preset](https://babeljs.io/docs/plugins/preset-env/) [Presets](https://babeljs.io/docs/plugins/#presets)          |
 | babel-polyfill               | default       | 6.26.0        | `Babel related:` Babel includes a polyfill that includes a custom regenerator runtime and core-js. See: [Polyfill](https://babeljs.io/docs/usage/polyfill/)                                                                                                                                                           |
@@ -18,6 +19,6 @@
 ### Installation
 
 ```bash
-npm install --save-dev rimraf webpack webpack-dev-server babel-core babel-preset-env babel-loader node-sass sass-loader css-loader extract-text-webpack-plugin html-webpack-plugin
+npm install --save-dev rimraf webpack webpack-dev-server webpack-merge babel-core babel-preset-env babel-loader node-sass sass-loader css-loader extract-text-webpack-plugin html-webpack-plugin
 npm install --save babel-polyfill
 ```
