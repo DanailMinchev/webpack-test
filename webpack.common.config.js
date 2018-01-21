@@ -59,8 +59,14 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
+    // This plugin will cause hashes to be based on the relative path of the module,
+    // generating a four character string as the module id.
+    // Suggested for use in production.
+    new webpack.HashedModuleIdsPlugin(),
     // Extract common code into separate files
     new webpack.optimize.CommonsChunkPlugin({
+      // Note that order matters here.
+      // The 'vendor' must be included prior to the 'manifest'.
       names: ['vendor', 'manifest']
     }),
     // Usually, it's recommended to extract the style sheets into a dedicated file
