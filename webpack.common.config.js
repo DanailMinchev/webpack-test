@@ -16,7 +16,7 @@ const extractSaas = new ExtractTextPlugin({
 module.exports = {
   target: 'web',
   entry: {
-    bundle: './src/js/app.js',
+    bundle: './src/js/index.js',
     vendor: VENDOR_LIBRARIES
   },
   output: {
