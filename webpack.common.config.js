@@ -4,7 +4,6 @@ const path = require('path')
 // npm
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Constants
 const VENDOR_LIBRARIES = ['babel-polyfill']
@@ -67,15 +66,6 @@ module.exports = {
     // Usually, it's recommended to extract the style sheets into a dedicated file
     // in production using the ExtractTextPlugin.
     // This way your styles are not dependent on JavaScript.
-    extractSaas,
-    // Update the <script> and <link> tags automatically
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      xhtml: false,
-      minify: {
-        collapseWhitespace: true
-      }
-    })
+    extractSaas
   ]
 }
