@@ -11,7 +11,7 @@ const VENDOR_LIBRARIES = ['babel-polyfill']
 // Initialisation and global variables
 const extractSaas = new ExtractTextPlugin({
   filename: '[name].[contenthash].css'
-});
+})
 
 module.exports = {
   target: 'web',
@@ -35,6 +35,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: extractSaas.extract({
           use: [
             {
@@ -46,7 +47,8 @@ module.exports = {
             {
               loader: 'sass-loader', // compiles Sass to CSS (applied 1st)
               options: {
-                sourceMap: true
+                sourceMap: true,
+                includePaths: ['node_modules/foundation-sites/scss']
               }
             }
           ]

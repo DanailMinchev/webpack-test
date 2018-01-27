@@ -1,5 +1,4 @@
-@import "colors";
+@import 'settings';
+@import 'foundation';
 
-.title {
-  color: $main;
-}
+@include foundation-everything;
