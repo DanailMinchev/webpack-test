@@ -62,6 +62,10 @@ module.exports = env => {
       ]
     },
     plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      }),
       // Update the <script> and <link> tags automatically
       new HtmlWebpackPlugin({
         template: 'src/index.html',
