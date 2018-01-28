@@ -7,10 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Constants
-const VENDOR_LIBRARIES = [
-  'babel-polyfill',
-  'lodash'
-]
+const VENDOR_LIBRARIES = ['babel-polyfill']
 
 // Initialisation and global variables
 const extractSaas = new ExtractTextPlugin({
