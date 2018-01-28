@@ -53,7 +53,10 @@ module.exports = env => {
                 loader: 'sass-loader', // compiles Sass to CSS (applied 1st)
                 options: {
                   sourceMap: true,
-                  includePaths: ['node_modules/foundation-sites/scss']
+                  includePaths: [
+                    'node_modules/foundation-sites/scss',
+                    'node_modules/motion-ui/src'
+                  ]
                 }
               }
             ]
