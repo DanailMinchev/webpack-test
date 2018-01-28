@@ -7,7 +7,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // Constants
-const VENDOR_LIBRARIES = ['babel-polyfill']
+const VENDOR_LIBRARIES = [
+  'babel-polyfill',
+  'lodash'
+]
 
 // Initialisation and global variables
 const extractSaas = new ExtractTextPlugin({
@@ -20,8 +23,8 @@ module.exports = env => {
   return {
     target: 'web',
     entry: {
-      bundle: './src/js/index.js',
-      vendor: VENDOR_LIBRARIES
+      vendor: VENDOR_LIBRARIES,
+      bundle: './src/js/index.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
