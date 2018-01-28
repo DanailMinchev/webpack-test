@@ -38,6 +38,8 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "foundation-sites": "^6.4.4-rc1",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "motion-ui": "^1.2.3",
+    "what-input": "^5.0.4"
   }
 }
