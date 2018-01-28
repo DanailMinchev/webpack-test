@@ -62,6 +62,7 @@ module.exports = env => {
       ]
     },
     plugins: [
+      // Shimming
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery'
