@@ -65,7 +65,9 @@ module.exports = env => {
       // Shimming
       new webpack.ProvidePlugin({
         $: 'jquery',
-        jQuery: 'jquery'
+        'window.$': 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery'
       }),
       // Update the <script> and <link> tags automatically
       new HtmlWebpackPlugin({
