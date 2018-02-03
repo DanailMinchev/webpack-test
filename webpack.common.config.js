@@ -46,7 +46,22 @@ module.exports = env => {
                 loader: 'css-loader', // translates CSS into CommonJS module (applied 2nd)
                 options: {
                   sourceMap: true,
-                  minimize: IS_PRODUCTION
+                  minimize: IS_PRODUCTION,
+                  importLoaders: 2 // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+                }
+              },
+              {
+                loader: 'postcss-loader', // PostCSS (applied 2nd)
+                options: {
+                  ident: 'postcss',
+                  sourceMap: true,
+                  plugins: () => {
+                    return [
+                      require('autoprefixer')({
+                        browsers: ['last 2 versions', 'ie >= 9', 'Android >= 2.3', 'ios >= 7']
+                      })
+                    ]
+                  }
                 }
               },
               {
