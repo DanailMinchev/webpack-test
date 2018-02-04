@@ -27,6 +27,7 @@
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.30.1",
+    "motion-ui": "^1.2.3",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.0",
     "rimraf": "^2.6.2",
@@ -40,7 +41,6 @@
     "babel-polyfill": "^6.26.0",
     "foundation-sites": "^6.4.4-rc1",
     "jquery": "^3.3.1",
-    "motion-ui": "^1.2.3",
     "what-input": "^5.0.4"
   }
 }
