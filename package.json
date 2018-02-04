@@ -2,7 +2,7 @@
   "name": "webpack-test",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "clean": "rimraf dist",
     "start:dev": "NODE_ENV=development webpack-dev-server --open --config webpack.development.config.js --env.NODE_ENV=development",

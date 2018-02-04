@@ -21,7 +21,7 @@ module.exports = env => {
     target: 'web',
     entry: {
       vendor: VENDOR_LIBRARIES,
-      app: './src/js/app.js'
+      app: './src/app.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -89,7 +89,7 @@ module.exports = env => {
       }),
       // Update the <script> and <link> tags automatically
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'src/app.html',
         filename: 'index.html',
         xhtml: false,
         minify: {

@@ -1,5 +1,7 @@
 require('./base')
-require('../scss/app.scss')
+require('./app.scss')
+
+$(document).foundation()
 
 const myString = 'hi!'
 console.log(myString)
