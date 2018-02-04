@@ -21,7 +21,7 @@ module.exports = env => {
     target: 'web',
     entry: {
       vendor: VENDOR_LIBRARIES,
-      bundle: './src/js/index.js'
+      app: './src/js/app.js'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
