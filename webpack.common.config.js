@@ -117,7 +117,9 @@ module.exports = env => {
       extractSaas,
       // see
       // https://byteplumbing.net/2017/08/static-asset-cache-busting-for-hugo/
-      new WebpackManifestPlugin()
+      new WebpackManifestPlugin({
+        fileName: '../site/data/manifest.json'
+      })
     ]
   }
 }
