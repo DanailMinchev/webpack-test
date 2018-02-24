@@ -5,6 +5,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackManifestPlugin = require('webpack-manifest-plugin');
 
 // Constants
 const VENDOR_LIBRARIES = ['babel-polyfill']
@@ -113,7 +114,10 @@ module.exports = env => {
       // Usually, it's recommended to extract the style sheets into a dedicated file
       // in production using the ExtractTextPlugin.
       // This way your styles are not dependent on JavaScript.
-      extractSaas
+      extractSaas,
+      // see
+      // https://byteplumbing.net/2017/08/static-asset-cache-busting-for-hugo/
+      new WebpackManifestPlugin()
     ]
   }
 }
