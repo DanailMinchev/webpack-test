@@ -7,7 +7,8 @@
     "clean": "rimraf dist && rimraf site/public && rimraf site/data/manifest.json",
     "start:dev": "NODE_ENV=development webpack-dev-server --open --config webpack.development.config.js --env.NODE_ENV=development",
     "build:dev": "NODE_ENV=development npm run clean && webpack --config webpack.development.config.js --env.NODE_ENV=development",
-    "build:prod": "NODE_ENV=production npm run clean && webpack --config webpack.production.config.js --env.NODE_ENV=production",
+    "build:prod": "NODE_ENV=production npm run clean && webpack --config webpack.production.config.js --env.NODE_ENV=production && npm run build:hugo",
+    "build:hugo": "hugo -d ../dist -s site -v",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
