@@ -25,7 +25,7 @@ module.exports = env => {
       app: './src/app.js'
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'site/themes/default/static'),
       filename: '[name].[chunkhash].js'
     },
     module: {
@@ -118,7 +118,7 @@ module.exports = env => {
       // see
       // https://byteplumbing.net/2017/08/static-asset-cache-busting-for-hugo/
       new WebpackManifestPlugin({
-        fileName: '../site/data/manifest.json'
+        fileName: '../site/themes/default/data/manifest.json'
       })
     ]
   }
