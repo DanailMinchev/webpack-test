@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
+    "gulp": "gulp",
     "clean": "rimraf dist",
     "start:dev": "NODE_ENV=development webpack-dev-server --open --config webpack.development.config.js --env.NODE_ENV=development",
     "build:dev": "NODE_ENV=development npm run clean && webpack --config webpack.development.config.js --env.NODE_ENV=development",
