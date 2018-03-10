@@ -1,9 +1,14 @@
-import gulp from 'gulp';
+import gulp from 'gulp'
+import del from 'del'
 
-gulp.task('default', defaultTask);
+export const clean = () => {
+  return del(['dist'])
+}
 
-function defaultTask(done) {
+gulp.task('default', defaultTask)
+
+function defaultTask (done) {
   // place code for your default task here
-  console.log('processing defaultTask here ...');
-  done();
+  console.log('processing defaultTask here ...')
+  done()
 }
