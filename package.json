@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "clean": "gulp clean",
+    "server": "gulp server",
     "start:dev": "NODE_ENV=development webpack-dev-server --open --config webpack.development.config.js --env.NODE_ENV=development",
     "build:dev": "NODE_ENV=development gulp build",
     "build:prod": "NODE_ENV=production gulp build",

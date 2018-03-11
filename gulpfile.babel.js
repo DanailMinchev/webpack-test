@@ -1,14 +1,26 @@
 import gulp from 'gulp'
+import browserSync from 'browser-sync'
 import del from 'del'
 import webpack from 'webpack'
 import webpackDevelopmentConfig from './webpack.development.config'
 import webpackProductionConfig from './webpack.production.config'
+
+const browserSyncMain = browserSync.create('main')
 
 const NODE_ENV = process.env.NODE_ENV
 const IS_PRODUCTION = NODE_ENV === 'production'
 
 export const clean = () => {
   return del(['dist'])
+}
+
+export const server = (done) => {
+  browserSyncMain.init({
+    server: {
+      baseDir: './dist'
+    }
+  })
+  done()
 }
 
 export const buildWebpack = (done) => {
