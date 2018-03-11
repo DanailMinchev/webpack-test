@@ -5,8 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "clean": "gulp clean",
-    "server": "gulp server",
-    "start:dev": "NODE_ENV=development webpack-dev-server --open --config webpack.development.config.js --env.NODE_ENV=development",
+    "start:dev": "NODE_ENV=development gulp start",
     "build:dev": "NODE_ENV=development gulp build",
     "build:prod": "NODE_ENV=production gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,7 +37,6 @@
     "sass-loader": "^6.0.6",
     "uglifyjs-webpack-plugin": "^1.2.0",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {

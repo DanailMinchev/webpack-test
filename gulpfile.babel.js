@@ -14,16 +14,7 @@ export const clean = () => {
   return del(['dist'])
 }
 
-export const server = (done) => {
-  browserSyncMain.init({
-    server: {
-      baseDir: './dist'
-    }
-  })
-  done()
-}
-
-export const buildWebpack = (done) => {
+const buildWebpack = (done) => {
   const webpackConfiguration =
     IS_PRODUCTION ? webpackProductionConfig({NODE_ENV}) : webpackDevelopmentConfig({NODE_ENV})
   webpack(webpackConfiguration, (err, stats) => {
@@ -45,6 +36,26 @@ export const buildWebpack = (done) => {
   })
 }
 
+const serverInit = (done) => {
+  browserSyncMain.init({
+    server: {
+      baseDir: './dist'
+    }
+  })
+  done()
+}
+
+const serverRefresh = (done) => {
+  browserSyncMain.reload();
+  done();
+}
+
 export const build = gulp.series(clean, gulp.parallel(buildWebpack))
+
+const watch = () => {
+  gulp.watch('./src', gulp.series(buildWebpack, serverRefresh));
+}
+
+export const start = gulp.series(build, gulp.parallel(watch, serverInit))
 
 export default build
