@@ -1,6 +1,7 @@
 import { spawn } from 'child_process'
 
 import gulp from 'gulp'
+import gulpHtmlmin from 'gulp-htmlmin'
 import browserSync from 'browser-sync'
 import del from 'del'
 import hugoBin from 'hugo-bin'
@@ -57,6 +58,22 @@ const buildHugo = (done) => {
   })
 }
 
+const htmlMinify = (done) => {
+  if (IS_PRODUCTION) {
+    return gulp.src('./dist/**/*.html')
+      .pipe(gulpHtmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        html5: true,
+        minifyCSS: true,
+        minifyJS: true,
+        useShortDoctype: true,
+      }))
+      .pipe(gulp.dest('./dist'))
+  }
+  done()
+}
+
 const serverInit = (done) => {
   browserSyncMain.init({
     server: {
@@ -71,11 +88,11 @@ const serverRefresh = (done) => {
   done()
 }
 
-export const build = gulp.series(clean, buildWebpack, buildHugo)
+export const build = gulp.series(clean, buildWebpack, buildHugo, htmlMinify)
 
 const watch = () => {
   gulp.watch('./src', gulp.series(buildWebpack, serverRefresh))
-  gulp.watch('./site', gulp.series(buildHugo, serverRefresh))
+  gulp.watch('./site', gulp.series(buildHugo, htmlMinify, serverRefresh))
 }
 
 export const start = gulp.series(build, serverInit, watch)

@@ -5,9 +5,10 @@
   "main": "src/app.js",
   "scripts": {
     "clean": "gulp clean",
-    "start": "npm run start:dev",
+    "start": "npm run start:prod",
     "start:dev": "NODE_ENV=development gulp start",
     "start:prod": "NODE_ENV=production gulp start",
+    "build": "npm run build:prod",
     "build:dev": "NODE_ENV=development gulp build",
     "build:prod": "NODE_ENV=production gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,6 +33,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
+    "gulp-htmlmin": "^4.0.0",
     "hugo-bin": "^0.23.0",
     "motion-ui": "^1.2.3",
     "node-sass": "^4.7.2",
