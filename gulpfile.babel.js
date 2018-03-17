@@ -1,6 +1,9 @@
+import { spawn } from 'child_process'
+
 import gulp from 'gulp'
 import browserSync from 'browser-sync'
 import del from 'del'
+import hugoBin from 'hugo-bin'
 import webpack from 'webpack'
 import webpackDevelopmentConfig from './webpack.development.config'
 import webpackProductionConfig from './webpack.production.config'
@@ -36,6 +39,27 @@ const buildWebpack = (done) => {
   })
 }
 
+const buildHugo = (done) => {
+  const hugoBinArguments = ['-d', '../dist', '-s', 'site', '-v']
+  const hugoBinChildProcess = spawn(hugoBin, hugoBinArguments, {
+    stdio: 'inherit',
+    shell: true
+  })
+  hugoBinChildProcess.on('close', (code, signal) => {
+    if (code === 0) {
+      browserSyncMain.reload()
+      done()
+    } else {
+      browserSyncMain.notify('Hugo build error: received nonzero return code ' + code, 5000)
+      done('Hugo build error: received nonzero return code ' + code)
+    }
+  })
+  hugoBinChildProcess.on('error', (err) => {
+    browserSyncMain.notify('Hugo build error: the process could not be spawned or killed', 5000)
+    done('Hugo build error: the process could not be spawned or killed')
+  })
+}
+
 const serverInit = (done) => {
   browserSyncMain.init({
     server: {
@@ -46,14 +70,15 @@ const serverInit = (done) => {
 }
 
 const serverRefresh = (done) => {
-  browserSyncMain.reload();
-  done();
+  browserSyncMain.reload()
+  done()
 }
 
-export const build = gulp.series(clean, gulp.parallel(buildWebpack))
+export const build = gulp.series(clean, gulp.parallel(buildWebpack, buildHugo))
 
 const watch = () => {
-  gulp.watch('./src', gulp.series(buildWebpack, serverRefresh));
+  gulp.watch('./src', gulp.series(buildWebpack, serverRefresh))
+  gulp.watch('./site', gulp.series(buildHugo, serverRefresh))
 }
 
 export const start = gulp.series(build, gulp.parallel(watch, serverInit))
