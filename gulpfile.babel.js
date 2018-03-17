@@ -14,7 +14,7 @@ const NODE_ENV = process.env.NODE_ENV
 const IS_PRODUCTION = NODE_ENV === 'production'
 
 export const clean = () => {
-  return del(['dist'])
+  return del(['dist', 'site/themes/default-theme/data/manifest.json'])
 }
 
 const buildWebpack = (done) => {
@@ -71,13 +71,13 @@ const serverRefresh = (done) => {
   done()
 }
 
-export const build = gulp.series(clean, gulp.parallel(buildWebpack, buildHugo))
+export const build = gulp.series(clean, buildWebpack, buildHugo)
 
 const watch = () => {
   gulp.watch('./src', gulp.series(buildWebpack, serverRefresh))
   gulp.watch('./site', gulp.series(buildHugo, serverRefresh))
 }
 
-export const start = gulp.series(build, gulp.parallel(watch, serverInit))
+export const start = gulp.series(build, serverInit, watch)
 
 export default build

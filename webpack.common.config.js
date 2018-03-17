@@ -4,7 +4,7 @@ const path = require('path')
 // npm
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackManifestPlugin = require('webpack-manifest-plugin')
 
 // Constants
 const VENDOR_LIBRARIES = ['babel-polyfill']
@@ -24,7 +24,7 @@ module.exports = env => {
       app: './src/app.js'
     },
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist', 'assets'),
       filename: '[name].[chunkhash].js'
     },
     module: {
@@ -87,15 +87,6 @@ module.exports = env => {
         jQuery: 'jquery',
         'window.jQuery': 'jquery'
       }),
-      // Update the <script> and <link> tags automatically
-      new HtmlWebpackPlugin({
-        template: 'src/app.html',
-        filename: 'index.html',
-        xhtml: false,
-        minify: {
-          collapseWhitespace: IS_PRODUCTION
-        }
-      }),
       // Allow global constants configured at compile time
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -113,7 +104,12 @@ module.exports = env => {
       // Usually, it's recommended to extract the style sheets into a dedicated file
       // in production using the ExtractTextPlugin.
       // This way your styles are not dependent on JavaScript.
-      extractSaas
+      extractSaas,
+      // see
+      // https://byteplumbing.net/2017/08/static-asset-cache-busting-for-hugo/
+      new WebpackManifestPlugin({
+        fileName: '../../site/themes/default-theme/data/manifest.json'
+      })
     ]
   }
 }

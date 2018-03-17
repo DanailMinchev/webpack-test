@@ -7,9 +7,6 @@ const webpackCommonConfig = require('./webpack.common.config')
 module.exports = env => {
   return webpackMerge(webpackCommonConfig(env), {
     devtool: 'inline-source-map',
-    devServer: {
-      contentBase: './dist'
-    },
     plugins: [
     ]
   })
