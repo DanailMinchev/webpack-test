@@ -47,15 +47,12 @@ const buildHugo = (done) => {
   })
   hugoBinChildProcess.on('close', (code, signal) => {
     if (code === 0) {
-      browserSyncMain.reload()
       done()
     } else {
-      browserSyncMain.notify('Hugo build error: received nonzero return code ' + code, 5000)
       done('Hugo build error: received nonzero return code ' + code)
     }
   })
   hugoBinChildProcess.on('error', (err) => {
-    browserSyncMain.notify('Hugo build error: the process could not be spawned or killed', 5000)
     done('Hugo build error: the process could not be spawned or killed')
   })
 }
