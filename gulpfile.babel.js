@@ -62,12 +62,21 @@ const htmlMinify = (done) => {
   if (IS_PRODUCTION) {
     return gulp.src('./dist/**/*.html')
       .pipe(gulpHtmlmin({
-        collapseWhitespace: true,
-        removeComments: true,
         html5: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: false,
+        removeAttributeQuotes: true,
+        removeRedundantAttributes: false,
+        removeEmptyAttributes: false,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        removeOptionalTags: false,
         minifyCSS: true,
         minifyJS: true,
-        useShortDoctype: true,
+        keepClosingSlash: false,
+        sortAttributes: true,
+        sortClassName: true
       }))
       .pipe(gulp.dest('./dist'))
   }
