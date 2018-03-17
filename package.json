@@ -5,7 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "clean": "gulp clean",
+    "start": "npm run start:dev",
     "start:dev": "NODE_ENV=development gulp start",
+    "start:prod": "NODE_ENV=production gulp start",
     "build:dev": "NODE_ENV=development gulp build",
     "build:prod": "NODE_ENV=production gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
