@@ -15,7 +15,7 @@ const NODE_ENV = process.env.NODE_ENV
 const IS_PRODUCTION = NODE_ENV === 'production'
 
 export const clean = () => {
-  return del(['dist', 'site/themes/default-theme/data/manifest.json'])
+  return del(['dist', 'site/data/manifest.json'])
 }
 
 const buildWebpack = (done) => {
