@@ -1,12 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ .Hugo.Generator }}
-    <title>Foundation for Sites</title>
-    <link href="/assets/{{- (index .Site.Data.manifest "app.css") -}}" rel="stylesheet">
+    {{ partial "header/meta.html" . }}
+    <title>{{- $.Site.Title -}}</title>
+    {{ partial "header/scripts.html" . }}
 </head>
 <body>
 <div class="grid-container">
@@ -162,8 +159,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="/assets/{{- (index .Site.Data.manifest "manifest.js") -}}"></script>
-<script type="text/javascript" src="/assets/{{- (index .Site.Data.manifest "vendor.js") -}}"></script>
-<script type="text/javascript" src="/assets/{{- (index .Site.Data.manifest "app.js") -}}"></script>
+{{ partial "footer/scripts.html" . }}
 </body>
 </html>
