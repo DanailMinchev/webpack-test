@@ -2,7 +2,7 @@
 <html class="no-js" lang="en" dir="ltr">
 <head>
     {{ partial "header/meta.html" . }}
-    <title>{{ block "title" . }}{{ if isset .Title }}{{ .Title }} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
+    <title>{{ block "title" . }} {{ with .Title }}{{ . }} | {{ end }}{{ $.Site.Title }}{{ end }}</title>
     {{ partial "header/scripts.html" . }}
 </head>
 <body>
