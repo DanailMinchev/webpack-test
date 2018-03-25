@@ -3,6 +3,13 @@
     <div class="cell">
         <h1>LIST PAGE</h1>
         {{ .Content }}
+        <ul>
+            {{ range .Data.Pages }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
     </div>
 </div>
 {{ end }}
