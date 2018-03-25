@@ -1,10 +1,12 @@
-{{ define "body" }}
-    <h1>Posts</h1>
-    {{ .Content }}
-    {{ range .Data.Pages }}
-    <article>
-        <h2>{{ .Title }}</h2>
+{{ define "main" }}
+<div class="grid-x">
+    <div class="cell">
+        <h1>LIST PAGE</h1>
         {{ .Content }}
-    </article>
-    {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "footerInfo" }}
+    {{ partial "footer/site-footer.html" (dict "TemplateFile" "_default/list.html" "ContentFile" .Params.contentFile) }}
 {{ end }}

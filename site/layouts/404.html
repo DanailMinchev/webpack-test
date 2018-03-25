@@ -1,0 +1,12 @@
+{{ define "main" }}
+<div class="grid-x">
+    <div class="cell">
+        <h1>404 PAGE</h1>
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "footerInfo" }}
+    {{ partial "footer/site-footer.html" (dict "TemplateFile" "404.html" "ContentFile" .Params.contentFile) }}
+{{ end }}

@@ -1,0 +1,196 @@
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text">{{ $.Site.Title }}</li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="cell">
+        <div class="callout">
+            <h5>Hugo Page Variables</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>.IsHome</td>
+                    <td>{{ .IsHome }}</td>
+                </tr>
+                <tr>
+                    <td>.IsNode</td>
+                    <td>{{ .IsNode }}</td>
+                </tr>
+                <tr>
+                    <td>.IsPage</td>
+                    <td>{{ .IsPage }}</td>
+                </tr>
+                <tr>
+                    <td>.IsTranslated</td>
+                    <td>{{ .IsTranslated }}</td>
+                </tr>
+                <tr>
+                    <td>.Kind</td>
+                    <td>{{ .Kind }}</td>
+                </tr>
+                <tr>
+                    <td>.Type</td>
+                    <td>{{ .Type }}</td>
+                </tr>
+                <tr>
+                    <td>.Lang</td>
+                    <td>{{ .Lang }}</td>
+                </tr>
+                <tr>
+                    <td>.Language</td>
+                    <td>{{ .Language }}</td>
+                </tr>
+                <tr>
+                    <td>.Keywords</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Keywords }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Data</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Data }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Pages</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Pages }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Params</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Params }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Content</td>
+                    <td>
+                        {{ .Content }}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="callout">
+            <h5>Hugo Site Variables</h5>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>.Site.AllPages</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.AllPages }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.Pages</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.Pages }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.RegularPages</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.RegularPages }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.Sections</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.Sections }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.Taxonomies</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.Taxonomies }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.Menus</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.Menus }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.Params</td>
+                    <td>
+                        {{ range $currentIndex, $currentElement := .Site.Params }}
+                        {{ $currentIndex }} - {{ $currentElement }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>.Site.IsMultiLingual</td>
+                    <td>{{ .Site.IsMultiLingual }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.Language.Lang</td>
+                    <td>{{ .Site.Language.Lang }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.Language.LanguageName</td>
+                    <td>{{ .Site.Language.LanguageName }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.Language.Weight</td>
+                    <td>{{ .Site.Language.Weight }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.Language</td>
+                    <td>{{ .Site.Language }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.LanguageCode</td>
+                    <td>{{ .Site.LanguageCode }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.LanguagePrefix</td>
+                    <td>{{ .Site.LanguagePrefix }}</td>
+                </tr>
+                <tr>
+                    <td>.Site.LastChange</td>
+                    <td>{{ .Site.LastChange }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

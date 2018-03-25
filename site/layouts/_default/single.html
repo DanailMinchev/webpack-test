@@ -1,4 +1,12 @@
-{{ define "body" }}
-    single
-    {{ .Content }}
+{{ define "main" }}
+<div class="grid-x">
+    <div class="cell">
+        <h1>SINGLE PAGE</h1>
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "footerInfo" }}
+    {{ partial "footer/site-footer.html" (dict "TemplateFile" "_default/single.html" "ContentFile" .Params.contentFile) }}
 {{ end }}
