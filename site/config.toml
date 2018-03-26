@@ -1,3 +1,7 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "Site Title"
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  label = "labels"
