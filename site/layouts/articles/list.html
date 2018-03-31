@@ -1,8 +1,9 @@
 {{ define "main" }}
 <div class="grid-x">
     <div class="cell">
-        <h1>LIST ARTICLES PAGE WITH DEFAULT PAGINATION</h1>
+        <h1>LIST ARTICLES PAGE WITH CUSTOM PAGINATION</h1>
         {{ .Content }}
+
         {{ $paginator := .Paginate (where .Data.Pages "Type" "articles") }}
         <ul>
         {{ range $paginator.Pages }}
@@ -11,7 +12,60 @@
             </li>
         {{ end }}
         </ul>
-        {{ template "_internal/pagination.html" . }}
+
+        {{ if gt $paginator.TotalPages 1 }}
+            <nav aria-label="Pagination">
+                <ul class="pagination text-center">
+                    {{ if ne $paginator.PageNumber 1 }}
+                    <li class="pagination-previous">
+                        <a href="{{ $paginator.First.URL }}" aria-label="First page">First</a>
+                    </li>
+                    {{ else }}
+                    <li class="pagination-previous disabled">
+                        First
+                    </li>
+                    {{ end }}
+                    {{ if $paginator.HasPrev }}
+                        <li class="pagination-previous">
+                            <a href="{{ $paginator.Prev.URL }}" aria-label="Previous page">Previous</a>
+                        </li>
+                    {{ else }}
+                        <li class="pagination-previous disabled">
+                            Previous
+                        </li>
+                    {{ end }}
+                    {{ range $paginator.Pagers }}
+                        {{ if eq . $paginator }}
+                           <li class="current">
+                               <span class="show-for-sr">You're on page</span> {{ .PageNumber }}
+                           </li>
+                        {{ else }}
+                            <li>
+                                <a href="{{ .URL }}" aria-label="Page {{ .PageNumber }}">{{ .PageNumber }}</a>
+                            </li>
+                        {{ end }}
+                    {{ end }}
+                    {{ if $paginator.HasNext }}
+                        <li class="pagination-next">
+                            <a href="{{ $paginator.Next.URL }}" aria-label="Next page">Next</a>
+                        </li>
+                    {{ else }}
+                        <li class="pagination-next disabled">
+                            Next
+                        </li>
+                    {{ end }}
+                    {{ if ne $paginator.PageNumber $paginator.TotalPages }}
+                    <li class="pagination-next">
+                        <a href="{{ $paginator.Last.URL }}" aria-label="Last page">Last</a>
+                    </li>
+                    {{ else }}
+                    <li class="pagination-next disabled">
+                        Last
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+        {{ end }}
     </div>
 </div>
 {{ end }}
