@@ -1,6 +1,18 @@
 baseURL = "/"
 languageCode = "en-us"
 title = "Site Title"
+
+# Pagination
+#
+# see:
+# https://gohugo.io/templates/pagination/
+paginate = 10
+paginatePath = "page"
+
+# Taxonomies
+#
+# see:
+# https://gohugo.io/templates/taxonomy-templates/
 [taxonomies]
   tag = "tags"
   category = "categories"
