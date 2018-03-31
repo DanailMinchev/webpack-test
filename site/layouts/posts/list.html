@@ -1,0 +1,21 @@
+{{ define "main" }}
+<div class="grid-x">
+    <div class="cell">
+        <h1>LIST POSTS PAGE WITH DEFAULT PAGINATION</h1>
+        {{ .Content }}
+        {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
+        <ul>
+        {{ range $paginator.Pages }}
+            <li>
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+        {{ end }}
+        </ul>
+        {{ template "_internal/pagination.html" . }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "footerInfo" }}
+    {{ partial "footer/site-footer.html" (dict "TemplateFile" "_default/list.html" "ContentFile" .Params.contentFile) }}
+{{ end }}
