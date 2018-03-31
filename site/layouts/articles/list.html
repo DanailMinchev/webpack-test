@@ -1,9 +1,9 @@
 {{ define "main" }}
 <div class="grid-x">
     <div class="cell">
-        <h1>LIST POSTS PAGE WITH DEFAULT PAGINATION</h1>
+        <h1>LIST ARTICLES PAGE WITH DEFAULT PAGINATION</h1>
         {{ .Content }}
-        {{ $paginator := .Paginate (where .Data.Pages "Type" "posts") }}
+        {{ $paginator := .Paginate (where .Data.Pages "Type" "articles") }}
         <ul>
         {{ range $paginator.Pages }}
             <li>
@@ -17,5 +17,5 @@
 {{ end }}
 
 {{ define "footerInfo" }}
-    {{ partial "footer/site-footer.html" (dict "TemplateFile" "posts/list.html" "ContentFile" .Params.contentFile) }}
+    {{ partial "footer/site-footer.html" (dict "TemplateFile" "articles/list.html" "ContentFile" .Params.contentFile) }}
 {{ end }}
